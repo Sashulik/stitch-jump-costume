@@ -2,6 +2,8 @@
 
 An ESP32 reads motion from a hoodie-mounted IMU and runs a small jump classifier on the costume. A detected jump makes the ear and belly lights sweep up and down, then returns to the selected effect. The costume runs offline after flashing.
 
+Jump detection uses a **fully connected MLP: 222 input features → 20 ReLU neurons → 10 ReLU neurons → 2 softmax class scores**, deployed as an int8 model. See [network architecture, training and evaluation](models/README.md#neural-network).
+
 ![Costume wiring: ESP32, motion sensor, pushbutton, power and two LED strips](docs/esp32-wiring-illustrated.png)
 
 - [Wiring, parts and assembly](docs/hardware.md)
